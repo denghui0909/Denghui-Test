@@ -1,0 +1,46 @@
+/*
+ * 输入示例
+ * 6
+ * 1 2 2 2 3 5
+ * 
+ * 输出示例
+ * 众数是：2
+ * 重数是：3
+*/
+
+import java.util.Scanner;
+public class Sy2_1 {
+	 public static void main(String args[]){ 
+	        Scanner sc  =  new Scanner(System.in); 
+	        int num[]; 
+	        int length; 
+	        System.out.print("请输入数据个数："); 
+	        length  =  sc.nextInt(); 	//输入数组元素个数length
+	        num = new int[length]; 		
+	        int count[] = new int[length]; 		//记数数组记录数据出现次数
+	        System.out.print("请输入数据："); 
+	        for(int i = 0;i < length;i++ ) 		//输入数据
+	            num[i] = sc.nextInt(); 
+	        
+	        for(int i = 0;i < length;i++ ) 
+	        { 		//外循环，循环变量是i，用于依次遍历数组元素
+	            for(int j = 0;j < length;j++ ){ 	//内循环，循环变量是j，用于再次遍历数组，寻找是否有与当前项重复的数
+	                if(num[i] == num[j]){ 	//如果num[j]和外循环num[i]相同，记数数组所对应的下标i所对应的数值 + 1
+	                    count[i] ++ ; 		
+	                } 
+	            } 
+	        }
+	        
+	        int frequency = 0; 		//定义并初始化重数frequency
+	        int mode = 0; 			//众数mode
+	        for(int i = 0;i < length;i++) 	
+	            if(count[i] > frequency){ 	//如果记数数组的值大于当前重数，更新众数和重数的值
+	                frequency = count[i]; 
+	                mode = num[i]; 
+	            }
+	        
+	        System.out.println("众数是：" + mode); 
+	        System.out.println("重数是：" + frequency); 
+	          
+	    } 
+}
